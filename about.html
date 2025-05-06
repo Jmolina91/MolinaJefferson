@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - Jefferson Mölina</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <style>
+    :root {
+      --background-color: #fff;
+      --text-color: #333;
+      --button-color: #ff2d55;
+      --button-bg: transparent;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--background-color);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark {
+      background-color: #121212;
+      color: #f1f1f1;
+      --text-color: #f1f1f1;
+    }
+
+    body.royal-blue-theme {
+      background-color: royalblue;
+      color: white;
+      --text-color: white;
+    }
+
+    body.royal-blue-theme header,
+    body.royal-blue-theme .nav a,
+    body.royal-blue-theme .profile .name {
+      color: black !important;
+    }
+
+    body.peach-theme {
+      background-color: #ffccbc;
+      color: #333;
+      --text-color: #333;
+    }
+
+    body.peach-theme header,
+    body.peach-theme footer {
+      background-color: #ffe0b2;
+      color: #333;
+    }
+
+    body.peach-theme .nav a {
+      color: #555;
+    }
+
+    body.peach-theme .nav a:hover {
+      color: #ff5722;
+    }
+
+    body.peach-theme .content h1,
+    body.peach-theme .content h2 {
+      color: #d84315;
+    }
+
+    body.peach-theme .theme-switcher {
+      color: #ff5722;
+      background-color: #fff;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 40px;
+      background-color: var(--background-color);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+    }
+
+    .profile img {
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .profile .name {
+      font-weight: bold;
+      font-size: 1.2em;
+      color: var(--text-color);
+    }
+
+    .profile .name span {
+      color: #0a84ff;
+    }
+
+    .nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--text-color);
+      position: relative;
+      font-size: 1.1em;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--button-color);
+    }
+
+    .theme-switcher {
+      cursor: pointer;
+      font-size: 1em;
+      padding: 10px 20px;
+      border: none;
+      color: var(--button-color);
+      background-color: var(--button-bg);
+      border-radius: 4px;
+    }
+
+    .theme-switcher:hover {
+      opacity: 0.8;
+    }
+
+    .content {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: left;
+      position: relative;
+      min-height: 300px;
+    }
+
+    .about-container {
+      display: flex;
+      gap: 30px;
+      align-items: top;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .about-container img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #eee;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-container .content-text {
+      flex: 1;
+      max-width: 650px;
+    }
+
+    .content h1 {
+      font-size: 3em;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .content h2 {
+      font-size: 2em;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    .content p {
+      margin: 10px 0;
+      font-size: 1.2em;
+    }
+
+    .content ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    .content a {
+      color: var(--button-color);
+      text-decoration: none;
+    }
+
+    .content a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background-color: #f8f9fa;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    footer .links a,
+    footer p,
+    footer .social-icons a {
+      color: #343a40;
+    }
+
+    footer .links {
+      margin-bottom: 10px;
+    }
+
+    footer .links a {
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer .social-icons {
+      margin-top: 10px;
+    }
+
+    footer .social-icons a {
+      margin: 0 10px;
+      font-size: 1.5em;
+    }
+
+    footer .social-icons a:hover {
+      color: #ff5722;
+    }
+  </style>
+</head>
+<body class="light">
+
+<header>
+  <div class="profile">
+    <img src="https://i.ibb.co/bQPxk6w/Untitled-design.png" alt="Profile Image" />
+    <div class="name">Jefferson Mölina <span>✔</span></div>
+  </div>
+  <nav class="nav">
+    <a href="portfolio me.html">01 home</a>
+    <a href="#">02 writing</a>
+    <a href="#">03 notes</a>
+    <a href="#" class="active">04 about</a>
+  </nav>
+  <button class="theme-switcher" onclick="toggleTheme()">Change Theme</button>
+</header>
+
+<div class="content">
+  <h1>About Me</h1>
+
+  <div class="about-container">
+    <img src="https://i.ibb.co/9Hnw9Rqh/1000004313.jpg" alt="Jefferson Mölina" />
+    <div class="content-text">
+      <p>Hello, I’m <strong>Jefferson Mölina</strong>, a Service Desk professional passionate about IT, web development, and troubleshooting.</p>
+
+      <h2>Experience</h2>
+      <p>I currently work as an <strong>Oracle Admin Support</strong> at Mitsumi Philippines Inc., where I ensure database performance and troubleshoot complex issues.</p>
+
+      <h2>Skills</h2>
+      <ul>
+        <li>Database management and troubleshooting</li>
+        <li>Firewall upgrades and network security</li>
+        <li>Backup reviews & disaster recovery</li>
+        <li>Web development with HTML, CSS, JavaScript, React.js</li>
+        <li>Microsoft 365 support</li>
+      </ul>
+
+      <h2>Part-time Web Developer</h2>
+      <p>In my spare time, I work as a part-time web developer. I focus on creating responsive websites and improving user experience.</p>
+
+      <h2>Contact</h2>
+      <p>Feel free to connect with me via the links below or visit my <a href=""https://www.upwork.com/freelancers/~012a917732823895c2?mp_source=share"">Upwork</a> for more of my work.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="links">
+    <a href="#">Work</a>
+    <a href="#">Social</a>
+    <a href="#">Legal</a>
+    <a href="#">Links</a>
+  </div>
+   <p>© 2022-2025 Jefferson Molina. All Rights Reserved.</p>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/share/1AUn13Puie/"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/jefferson-molina-10267b259"><i class="fab fa-linkedin"></i></a>
+  </div>
+</footer>
+
+<script>
+  function toggleTheme() {
+    const body = document.body;
+
+    if (body.classList.contains('light')) {
+      body.className = 'dark';
+    } else if (body.classList.contains('dark')) {
+      body.className = 'royal-blue-theme';
+    } else if (body.classList.contains('royal-blue-theme')) {
+      body.className = 'peach-theme';
+    } else {
+      body.className = 'light';
+    }
+  }
+</script>
+
+</body>
+</html>

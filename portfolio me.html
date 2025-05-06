@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jefferson Mölina - I Make Websites</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Adjust this path as per your project -->
+
+    <style>
+        :root {
+    --background-color: #fff;
+    --text-color: #333;
+    --button-color: #ff2d55; /* Default button color */
+    --button-background-color: transparent; /* Default button background color */
+}
+
+     body.light {
+     font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--background-color);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      transition: background-color 0.3s, color 0.3s;
+}
+
+        body.dark {
+            --background-color: #1f1f1f;
+            --text-color: #fff;
+        }
+
+        
+        body.royal-blue-theme {
+    background-color: royalblue; /* Royal blue background */
+    color: white; /* Default text color */
+}
+
+body.royal-blue-theme header {
+    color: black; /* Change header text color to black */
+}
+
+body.royal-blue-theme .nav a {
+    color: black; /* Change link color to black in royal blue theme */
+}
+
+body.royal-blue-theme .name {
+    color: black; /* Change the name color to black in royal blue theme */
+}
+
+	
+	body.peach-theme {
+    background-color: #ffccbc; /* Peach color */
+    color: #333; /* Dark text for readability */
+}
+
+body.peach-theme header {
+    background-color: #ffe0b2; /* Lighter peach for header */
+    color: #333; /* Dark text for header */
+}
+
+body.peach-theme .nav a {
+    color: #555; /* Darker color for navigation links */
+}
+
+body.peach-theme .nav a:hover {
+    color: #ff5722; /* Change to a vibrant color on hover */
+}
+
+body.peach-theme .content h1,
+body.peach-theme .content h2 {
+    color: #d84315; /* Darker color for headings */
+}
+
+body.peach-theme footer {
+    background-color: #ffe0b2; /* Footer background */
+    color: #333; /* Dark text for footer */
+}
+
+body.peach-theme .content p {
+    color: #444; /* Slightly darker for better readability */
+}
+
+body.peach-theme .theme-switcher {
+    color: #ff5722; /* Button text color */
+    background-color: #fff; /* Button background for contrast */
+}
+
+
+/* Ensure to update the body background */
+body {
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    background-size: cover; /* Ensure the background covers the entire area */
+    color: var(--text-color);
+}
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 40px;
+            background-color: var(--background-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .profile .name {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: var(--text-color);
+        }
+
+        .profile .name span {
+            color: #0a84ff;
+            font-size: 1.2em;
+        }
+
+        .nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            position: relative;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #ff2d55;
+        }
+
+        .theme-switcher {
+            cursor: pointer;
+            font-size: 1em;
+            padding: 10px 20px;
+            border: none;
+            color: var(--button-color); /* Button text color */
+            background-color: var(--button-background-color); /* Button background color */
+            border-radius: 4px;
+        }
+
+        .theme-switcher:hover {
+            background-color: #e20a4b;
+        }
+	
+        .content {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .content p {
+            margin: 10px 0;
+            font-size: 1.2em;
+            color: var(--text-color); /* Text color */
+        }
+
+        .content h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: var(--text-color); /* Text color */
+        }
+
+        .content p a {
+            color: #ff2d55;
+            text-decoration: none;
+        }
+
+        .content p a:hover {
+            text-decoration: underline;
+        }
+
+        .featured-posts {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .featured-posts h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: var(--text-color); /* Text color */
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 1200px) {
+            .posts-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .posts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .post {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .post img {
+            width: 100%;
+            height: auto;
+        }
+
+        .post-title {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .post-meta {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #fff;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+        }
+
+        .post-meta .likes {
+            display: flex;
+            align-items: center;
+        }
+
+        .post-meta .likes i {
+            margin-right: 5px;
+        }
+
+        .like-btn.clicked + .post-meta .likes i {
+            display: none;
+        }
+.like-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5em;
+    transition: transform 0.3s, color 0.3s; /* Add transition for pop effect */
+}
+
+.like-btn.clicked {
+    color: orangered; /* Change to orange-red on click */
+    transform: scale(1.2); /* Pop-out effect */
+}
+
+
+        .see-all-posts {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .see-all-posts a {
+            text-decoration: none;
+            color: #ff2d55;
+            font-weight: bold;
+        }
+
+        footer {
+      background-color: #f8f9fa;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    footer .links a,
+    footer p,
+    footer .social-icons a {
+      color: #343a40;
+    }
+
+    footer .links {
+      margin-bottom: 10px;
+    }
+
+    footer .links a {
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer .social-icons {
+      margin-top: 10px;
+    }
+
+    footer .social-icons a {
+      margin: 0 10px;
+      font-size: 1.5em;
+    }
+
+    footer .social-icons a:hover {
+      color: #ff5722;
+    }
+    </style>
+</head>
+<body class="light">
+
+<header>
+    <div class="profile">
+        <img src="https://i.ibb.co/bQPxk6w/Untitled-design.png" alt="Profile Image">
+        <div class="name">Jefferson Mölina <span>✔</span></div>
+    </div>
+    <nav class="nav">
+        <a href="#" class="active">01 home</a>
+        <a href="#">02 writing</a>
+        <a href="#">03 notes</a>
+        <a href="about me.html">04 about</a>
+    </nav>
+    <button class="theme-switcher" onclick="toggleTheme()">Change Theme</button>
+</header>
+
+<div class="content">
+    <p>HELLO, MY NAME IS JEFF</p>
+    <h1>I keep systems running smoothly.</h1>
+
+    <p>I’m a Service Desk professional with experience in troubleshooting and IT support. I’m passionate about helping users and ensuring smooth system operations. I also share insights and tips on improving clients websites on my <a href="https://www.upwork.com/freelancers/~012a917732823895c2?mp_source=share">Upwork</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="featured-posts">
+        <h2>Featured Posts</h2>
+        <div class="posts-grid">
+            <div class="post">
+                <img src="https://i.ibb.co/rmPGnXQ/New-Project-36.png"  alt="New CSS Tricks">
+                <button class="like-btn"><i class="fa fa-heart"></i></button>
+                <div class="post-title">Old Dogs, new CSS Tricks</div>
+                <div class="post-meta">
+                    <div class="likes"><i class="fa fa-heart"></i> <span class="likes-count">47</span></div>
+                </div>
+            </div>
+            <div class="post">
+                <img src="https://i.ibb.co/r4TNT3G/New-Project-17.png" alt="The IndieWeb for Everyone">
+                <button class="like-btn"><i class="fa fa-heart"></i></button>
+                <div class="post-title">The IndieWeb for Everyone</div>
+                <div class="post-meta">
+                    <div class="likes"><i class="fa fa-heart"></i> <span class="likes-count">110</span></div>
+                </div>
+            </div>
+            <div class="post">
+                <img src="https://i.ibb.co/fxdtzVH/New-Project-30.png" alt="Media Queries in Times of @container">
+                <button class="like-btn"><i class="fa fa-heart"></i></button>
+                <div class="post-title">Media Queries in Times of @container</div>
+                <div class="post-meta">
+                    <div class="likes"><i class="fa fa-heart"></i> <span class="likes-count">225</span></div>
+                </div>
+            </div>
+            <div class="post">
+                <img src="https://i.ibb.co/BZq2vtj/New-Project-31.png" alt="Container Queries in Web Components">
+                <button class="like-btn"><i class="fa fa-heart"></i></button>
+                <div class="post-title">Container Queries in Web Components</div>
+                <div class="post-meta">
+                    <div class="likes"><i class="fa fa-heart"></i> <span class="likes-count">273</span></div>
+                </div>
+            </div>
+            <div class="post">
+                <img src="https://i.ibb.co/zxL8qZK/New-Project-32.png" alt="Space Jam">
+                <button class="like-btn"><i class="fa fa-heart"></i></button>
+                <div class="post-title">Space Jam</div>
+                <div class="post-meta">
+                    <div class="likes"><i class="fa fa-heart"></i> <span class="likes-count">58</span></div>
+                </div>
+            </div>
+            <div class="post">
+                <img src="https://i.ibb.co/RDchdsF/New-Project-33.png" alt="The Return of the 90s Web">
+                <button class="like-btn"><i class="fa fa-heart"></i></button>
+                <div class="post-title">The Return of the 90s Web</div>
+                <div class="post-meta">
+                    <div class="likes"><i class="fa fa-heart"></i> <span class="likes-count">336</span></div>
+                </div>
+            </div>
+            <div class="post">
+                <img src="https://i.ibb.co/vVNVcNR/New-Project-34.png" alt="Color Theme Switcher">
+                <button class="like-btn"><i class="fa fa-heart"></i></button>
+                <div class="post-title">Color Theme Switcher</div>
+                <div class="post-meta">
+                    <div class="likes"><i class="fa fa-heart"></i> <span class="likes-count">285</span></div>
+                </div>
+            </div>
+            <div class="post">
+                <img src="https://i.ibb.co/Fsb3bRZ/New-Project-35.png" alt="The Emergency Website Kit">
+                <button class="like-btn"><i class="fa fa-heart"></i></button>
+                <div class="post-title">The Emergency Website Kit</div>
+                <div class="post-meta">
+                    <div class="likes"><i class="fa fa-heart"></i> <span class="likes-count">161</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="see-all-posts">
+            <a href="#">See All Posts →</a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="links">
+        <a href="#">Work</a>
+        <a href="#">Social</a>
+        <a href="#">Legal</a>
+        <a href="#">Links</a>
+    </div>
+    <p>© 2022-2025 Jefferson Molina. All Rights Reserved.</p>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/share/1AUn13Puie/"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.upwork.com/freelancers/~012a917732823895c2?mp_source=share"><i class="fab fa-upwork"></i></a>
+        <a href="https://www.linkedin.com/in/jefferson-molina-10267b259"><i class="fab fa-linkedin"></i></a>
+    </div>
+</footer>
+
+<script>
+function toggleTheme() {
+    const body = document.body;
+    const themeButton = document.querySelector('.theme-switcher');
+
+    let nextTheme;
+    if (body.classList.contains('light')) {
+        body.className = 'dark';
+        nextTheme = 'royal-blue';
+    } else if (body.classList.contains('dark')) {
+        body.className = 'royal-blue-theme';
+        nextTheme = 'peach';
+    } else if (body.classList.contains('royal-blue-theme')) {
+        body.className = 'peach-theme';
+        nextTheme = 'light';
+    } else {
+        body.className = 'light';
+        nextTheme = 'dark';
+    }
+
+    switch (nextTheme) {
+        case 'dark':
+            themeButton.style.backgroundColor = '#444';
+            themeButton.style.color = '#fff';
+            break;
+        case 'royal-blue':
+            themeButton.style.backgroundColor = 'white';
+            themeButton.style.color = 'royalblue';
+            break;
+        case 'peach':
+            themeButton.style.backgroundColor = '#fff';
+            themeButton.style.color = '#ff5722';
+            break;
+        case 'light':
+        default:
+            themeButton.style.backgroundColor = 'transparent';
+            themeButton.style.color = '#ff2d55';
+            break;
+    }
+
+    const textColor = body.classList.contains('dark') || body.classList.contains('royal-blue-theme') ? '#fff' : '#333';
+    body.style.setProperty('--text-color', textColor);
+}
+
+// Like functionality with localStorage
+document.addEventListener('DOMContentLoaded', () => {
+    const likeButtons = document.querySelectorAll('.like-btn');
+
+    likeButtons.forEach((button, index) => {
+        const post = button.closest('.post');
+        const countSpan = post.querySelector('.likes-count');
+        const postId = `post-${index}`;
+
+        // Load saved like state
+        const isLiked = localStorage.getItem(postId) === 'liked';
+        if (isLiked) {
+            button.classList.add('clicked');
+        }
+
+        // Save original count if not already stored
+        if (localStorage.getItem(`${postId}-count`) === null) {
+            localStorage.setItem(`${postId}-count`, countSpan.textContent);
+        }
+
+        // Load and apply saved count
+        const savedCount = parseInt(localStorage.getItem(`${postId}-count`), 10);
+        countSpan.textContent = isLiked ? savedCount + 1 : savedCount;
+
+        button.addEventListener('click', () => {
+            const currentCount = parseInt(countSpan.textContent, 10);
+            let originalCount = parseInt(localStorage.getItem(`${postId}-count`), 10);
+
+            if (button.classList.contains('clicked')) {
+                // Unlike
+                button.classList.remove('clicked');
+                countSpan.textContent = currentCount - 1;
+                localStorage.setItem(postId, 'unliked');
+                localStorage.setItem(`${postId}-count`, originalCount);
+            } else {
+                // Like
+                button.classList.add('clicked');
+                countSpan.textContent = currentCount + 1;
+                localStorage.setItem(postId, 'liked');
+                localStorage.setItem(`${postId}-count`, originalCount);
+            }
+        });
+    });
+});
+</script>
+
+
+
+</body>
+</html>
